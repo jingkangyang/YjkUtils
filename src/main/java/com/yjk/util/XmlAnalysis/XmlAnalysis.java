@@ -8,6 +8,9 @@ import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import com.yjk.util.JsonToBean.Course;
 
+/**
+ * dom4j解析xml
+ */
 public class XmlAnalysis {
 
 	public static void main(String[] args) throws DocumentException {
@@ -47,8 +50,8 @@ public class XmlAnalysis {
 		for(Element e:items) {
 			Course course = new Course();
 			course.setCid(e.selectSingleNode("cid").getText());
-			course.setCid(e.selectSingleNode("cname").getText());
-			course.setCid(e.selectSingleNode("grade").getText());
+			course.setCname(e.selectSingleNode("cname").getText());
+			course.setGrade(e.selectSingleNode("grade").getText());
 			courseList.add(course);
 		}
 		return courseList;

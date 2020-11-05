@@ -29,7 +29,9 @@ public class BeanToXml {
 		courseList.add(cou2);
 		stu.setMessage(msg);
 		stu.setList(courseList);
-		System.out.println(beanToXml(stu));
+		String xml = beanToXml(stu);
+		System.out.println(xml);
+
 	}
 
 	public static String beanToXml(StudentBean stu) {
@@ -38,5 +40,5 @@ public class BeanToXml {
 		xStream.alias("course", Course.class);
 		return xStream.toXML(stu);
 	}
-	
+
 }

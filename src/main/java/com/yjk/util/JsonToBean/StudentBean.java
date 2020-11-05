@@ -1,11 +1,15 @@
 package com.yjk.util.JsonToBean;
 
+import javax.xml.bind.annotation.*;
 import java.util.List;
-
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "root")
 public class StudentBean {
-
+	@XmlElement(name = "message")
 	private Message message;
 
+	@XmlElementWrapper(name = "courseList")
+	@XmlElement(name = "course")
 	private List<Course> courseList;
 
 	public List<Course> getList() {
@@ -24,4 +28,11 @@ public class StudentBean {
 		this.message = message;
 	}
 
+	@Override
+	public String toString() {
+		return "StudentBean{" +
+				"message=" + message +
+				", courseList=" + courseList +
+				'}';
+	}
 }

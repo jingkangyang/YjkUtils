@@ -1,10 +1,9 @@
 package com.yjk.util.JsonToBean;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import java.util.List;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import net.sf.json.JsonConfig;
 
 public class JsonToBean {
 	
@@ -29,28 +28,28 @@ public class JsonToBean {
 				"}";
 		System.out.println(jsonStr);
 		//String转JSONObject
-		JSONObject jsonObj = JSONObject.fromObject(jsonStr);
+		JSONObject jsonObj = JSON.parseObject(jsonStr);
 		JSONObject jsonObjMessage = jsonObj.getJSONObject("message");
 		//JSONObject转Bean
-		Message message = (Message) JSONObject.toBean(jsonObjMessage,Message.class);
+		Message message = JSON.toJavaObject(jsonObjMessage,Message.class);
 		System.out.println(message.toString());
 		
 		JSONArray jsonArrCourse = jsonObj.getJSONArray("course");
 		
 		//JSONArray转Bean
 		@SuppressWarnings("unchecked")
-		List<Course> courseList = JSONArray.toList(jsonArrCourse, new Course(), new JsonConfig());
+		List<Course> courseList = JSONObject.parseArray(jsonArrCourse.toJSONString(),Course.class);
 		System.out.println(courseList);
 
 		//Bean转JSONObject
 		Message msg = new Message();
 		msg.setId("1");
 		msg.setName("李四");
-		JSONObject jsonObj2 = JSONObject.fromObject(msg);
-		System.out.println(jsonObj2.toString());
+		String jsonObj2Str = JSON.toJSONString(msg);
+		System.out.println(jsonObj2Str);
 		
 		//List转JSONObject
-		JSONArray jsonObj3 = JSONArray.fromObject(courseList);
+		JSONArray jsonObj3 = JSONArray.parseArray(JSON.toJSONString(courseList));
 		System.out.println(jsonObj3.toString());
 	}
 
