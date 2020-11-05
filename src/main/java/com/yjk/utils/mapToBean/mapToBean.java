@@ -1,7 +1,7 @@
-package com.yjk.util.mapToBean;
+package com.yjk.utils.mapToBean;
 
-import com.yjk.util.JsonToBean.Message;
-import com.yjk.util.JsonToBean.StudentBean;
+import com.yjk.utils.JsonToBean.Message;
+import com.yjk.utils.JsonToBean.StudentBean;
 import org.springframework.cglib.beans.BeanMap;
 import java.util.HashMap;
 import java.util.Map;

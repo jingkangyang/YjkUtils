@@ -1,7 +1,6 @@
-package com.yjk.util.JsonToBean;
+package com.yjk.utils.JsonToBean;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
